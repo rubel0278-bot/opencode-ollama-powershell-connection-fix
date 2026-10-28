@@ -104,6 +104,19 @@ Record all of the following before marking a fix confirmed:
 - The resulting command output and any remaining limitations.
 - The OpenCode, Ollama, and model versions involved.
 
+## Distinguish the installed Qwen models
+
+The case notes list these separate Ollama models:
+
+- `gpt-oss:20b` (about 13 GB)
+- `qwen3-powershell:latest` (about 18 GB)
+
+**Do not confuse `qwen3-powershell:latest` with a separate Qwen3 30B model.** The available inventory/report identifies the former, not the latter. A model being installed or selectable does not by itself prove its PowerShell tool calling works.
+
+For `qwen3-powershell:latest`, verify by selecting that exact model in OpenCode and running a harmless test such as `Get-Date`. Count it as working only if OpenCode actually invokes PowerShell and returns the command output—not if the model merely prints tool-call-looking text. Record the model name, versions, redacted error (if any), and successful output.
+
+**Qwen3 30B status:** no verified PowerShell test for a separate Qwen3 30B model is recorded in these case notes. Do not claim it is connected or fixed until that exact model is identified and tested.
+
 ## Related issue: ComfyUI MCP is separate
 
 A ComfyUI MCP bridge problem is a separate integration path from OpenCode's PowerShell tool calling. Do not change ComfyUI's MCP configuration to address a PowerShell tool-call failure unless logs directly connect the two.
